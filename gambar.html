@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Valentine Gallery</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom, #ffe6ec, #fff);
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff4d6d, #ff758f);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            font-size: 36px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        /* Animasi hati jatuh */
+        .heart {
+            position: fixed;
+            top: -10px;
+            color: #ff4d6d;
+            font-size: 20px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            color: #ff4d6d;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Galeri */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Popup foto */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .popup img {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 15px;
+        }
+
+        .popup span {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        /* Audio */
+        .audio {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        footer {
+            background: #ff4d6d;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>💖 Valentine Memories 💖</h1>
+    <p>Kumpulan foto & momen spesial</p>
+</header>
+
+<main>
+    <h2>📸 Galeri Valentine</h2>
+
+    <div class="gallery">
+        <img src="multimedia/WhatsApp Image 2026-01-08 at 11.40.40 (1).jpeg" onclick="openPopup(this.src)">
+        <img src="multimedia/WhatsApp Image 2026-01-08 at 11.40.40.jpeg" onclick="openPopup(this.src)">
+        <img src="multimedia/WhatsApp Image 2026-01-08 at 11.40.41 (1).jpeg" onclick="openPopup(this.src)">
+        <img src="multimedia/WhatsApp Image 2026-01-08 at 11.40.41 (2).jpeg" onclick="openPopup(this.src)">
+        <img src="multimedia/WhatsApp Image 2026-01-08 at 11.40.41.jpeg" onclick="openPopup(this.src)">
+    </div>
+
+    <div class="audio">
+        <h2>🎵 Lagu Valentine</h2>
+        <audio controls autoplay loop>
+            <source src="multimedia/WhatsApp Audio 2026-01-08 at 11.41.53.aac" type="audio/mpeg">
+        </audio>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2026 Valentine Website | Made with ❤️</p>
+</footer>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+    <span onclick="closePopup()">✖</span>
+    <img id="popupImg">
+</div>
+
+<script>
+    function openPopup(src) {
+        document.getElementById("popup").style.display = "flex";
+        document.getElementById("popupImg").src = src;
+    }
+
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+
+    /* Generate hati */
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }, 300);
+</script>
+<footer>
+    <p>&copy; <a href="website projek.html">HOME</a> ❤️</p>
+</footer>
+
+</body>
+</html>
